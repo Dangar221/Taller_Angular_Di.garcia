@@ -1,0 +1,38 @@
+<div class="container-fluid mt-4">
+  <h2 class="mb-3">TV Series</h2>
+
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Channel</th>
+          <th>Seasons</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let serie of series" (click)="onSelect(serie)" style="cursor: pointer;">
+          <td>{{ serie.id }}</td>
+          <td>{{ serie.name }}</td>
+          <td>{{ serie.channel }}</td>
+          <td>{{ serie.seasons }}</td>
+        </tr>
+        </tbody>
+      </table>
+      <p><strong>Seasons average: {{ averageSeasons | number:'1.0-0' }}</strong></p>
+    </div>
+
+    <div class="col-md-4" *ngIf="selectedSerie">
+      <div class="card">
+        <img [src]="selectedSerie.poster" class="card-img-top" alt="{{ selectedSerie.name }}">
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedSerie.name }}</h5>
+          <p class="card-text">{{ selectedSerie.description }}</p>
+          <a [href]="selectedSerie.webpage" target="_blank" class="btn btn-primary">Visit page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
